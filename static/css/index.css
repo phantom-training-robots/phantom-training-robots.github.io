@@ -1,0 +1,280 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+
+.footer .icon-link {
+    font-size: 25px;
+    color: #000;
+}
+
+.link-block a {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.section {
+  margin-top: 20px;
+  padding-top: 0;
+}
+
+.publication-title {
+}
+
+.publication-banner {
+  max-height: parent;
+
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
+}
+
+.publication-title {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+    color: #555;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.publication-awards {
+    color: #ff3860;
+    width: fit-content;
+    font-weight: bolder;
+}
+
+.publication-authors {
+}
+
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-banner img {
+}
+
+.publication-authors {
+  /*color: #4286f4;*/
+}
+
+.publication-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+    overflow: hidden;
+    border-radius: 10px !important;
+}
+
+.publication-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.publication-body img {
+}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+
+.interpolation-panel {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.interpolation-panel .interpolation-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.interpolation-video-column {
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+#interpolation-image-wrapper {
+  width: 100%;
+}
+#interpolation-image-wrapper img {
+  border-radius: 5px;
+}
+
+
+.baseline-image {
+  width: 50%;
+  border-radius: 5px;
+}
+
+.video-container-multi {
+  display: block;
+  justify-content: space-between; /* Spaces videos evenly */
+  align-items: center; /* Aligns videos vertically */
+  width: 100%; /* Ensures full width */
+  padding: 20px; /* Adds spacing */
+}
+
+
+.video-container-multi video {
+  width: 100%; /* Each video takes up 30% of the width */
+  clip-path: inset(0px 0px 1px 0px); /* Crop 1px from the bottom */
+  /* max-width: 400px; Optional: Limit video size */
+}
+
+
+.video-container {
+  display: flex;
+  justify-content: space-between; /* Spaces videos evenly */
+  align-items: center; /* Aligns videos vertically */
+  width: 100%; /* Ensures full width */
+  padding: 20px; /* Adds spacing */
+}
+
+.video-container video {
+  width: 19%; /* Each video takes up 30% of the width */
+  max-width: 400px; /* Optional: Limit video size */
+}
+
+
+.video-container-2 {
+  display: flex;
+  justify-content: center; /* Centers the entire video block */
+  align-items: flex-start; /* Aligns items to the top to prevent uneven spacing */
+}
+
+.video-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers captions below videos */
+  text-align: center;
+  margin-right: 15px;
+}
+
+.video-item video {
+  width: 75%; /* Adjusted width */
+  max-width: 400px; /* Optional: Prevents oversized videos */
+}
+
+.caption {
+  margin-top: 8px; /* Adds spacing between video and caption */
+  font-size: 14px; /* Adjust caption size if needed */
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+th, td {
+  border: 2px solid black;
+  padding: 10px;
+}
+
+th {
+  background-color: #f8f8f8;
+}
+
+
+
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  border: 1px solid black; /* Thin border around the table */
+}
+
+.styled-table th, .styled-table td {
+  border: 1px solid black; /* Thin vertical and horizontal lines */
+  padding: 5px; /* Reduced padding for smaller table height */
+  text-align: left;
+  font-size: 14px; /* Keeps text compact */
+  line-height: 1.2;
+  font-weight: normal; /* Ensures numbers are not bold */
+}
+
+.styled-table th {
+  background-color: #f4f4f4;
+  font-weight: bold; /* Keep headers bold */
+}
+
+.styled-table td:first-child {
+  font-weight: bold; /* Keep first column bold */
+}
+
+.table-wrapper {
+  display: flex;
+  flex-direction: column; /* Ensures tables stack on top of each other */
+  align-items: center;
+  gap: 10px; /* Reduced space between tables */
+}
+
+@media (max-width: 768px) {
+  .styled-table {
+      width: 100%;
+  }
+}

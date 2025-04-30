@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Phantom: Training Robots Without Robots Using Only Human Videos">
+  <meta name="keywords" content="Learning from Human Videos">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phantom: Training Robots Without Robots Using Only Human Videos</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/phantom.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Phantom: Training Robots Without Robots Using Only Human Videos</h1>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="dollyzoom" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/hero.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+        <div class="row">
+          <div class="content has-text-justified">
+            <p>
+              Training general-purpose robots requires learning from large and diverse data sources. Current approaches rely heavily on teleoperated demonstrations which are difficult to scale. We present a scalable framework for training manipulation policies directly from human video demonstrations, requiring no robot data. Our method converts human demonstrations into robot-compatible observation-action pairs using hand pose estimation and visual data editing. We inpaint the human arm and overlay a rendered robot to align the visual domain. This enables zero-shot deployment on real hardware without any fine-tuning. We demonstrate strong success rates—up to 92%—on a range of tasks including deformable object manipulation, multi-object sweeping, and insertion. Our approach generalizes to novel environments and supports closed-loop execution. By demonstrating that effective policies can be trained using only human videos, our method broadens the path to scalable robot learning.
+            </p>
+          </div>
+        </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Section Title -->
+    <h2 class="title">Approach</h2>
+
+      <img src="./static/images/method.png"
+      class="interpolation-image"
+      alt="Interpolate start reference image."/>
+
+      <div class="row">
+        <div class="content">
+          <p style="margin-bottom: 2rem;">
+            <strong>Overview of our data-editing pipeline for learning robot policies from human videos.</strong> 
+            During training, we first estimate the hand pose in each frame of a human video demonstration and convert it into a robot action. We then remove the human hand using inpainting and overlay a virtual robot in its place. The resulting augmented dataset is used to train an imitation learning policy, &pi;. At test time, we overlay a virtual robot on real robot observations to ensure visual consistency, enabling direct deployment of the learned policy on a real robot.
+          </p>
+
+          <p style="margin-bottom: 0;">
+            Our method is <strong>robot agnostic</strong>. As shown below, each human video can be converted into a robot demonstration for any robot capable of completing the task. In our experiments, we deploy our method on two different robots: Franka and Kinova Gen3 (both with robotiq gripper).
+          </p>
+          <div class="video-container-multi">
+            <video autoplay muted loop playsinline>
+              <source src="./static/videos/multi_robots.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Section Title -->
+    <h2 class="title">Real-world experiments</h2>
+
+      <!-- Baselines. -->
+      <div class="row" style="margin-bottom: 2rem;">
+        <div class="content">
+          <h5 class="title is-5">Data-Editing Strategies</h5>
+          <p>
+            We compare three data-editing strategies: (1) Hand Inpaint (Phantom) inspired by <a href="https://rovi-aug.github.io/">Rovi-Aug</a>, (2) Hand Mask inspired by <a href="https://shadow-cross-embodiment.github.io/">Shadow</a>, and (3) Red Line inspired by <a href="https://egomimic.github.io/">EgoMimic</a>. While (3) is already designed for human videos, we adapt the data-editing strategies from (1) and (2), which were originally developed for the simpler robot-to-robot setting, to the human-to-robot setting. We also compare to a baseline that does not
+            modify the train or test images in any way.
+          </p>
+          <div style="text-align: center;">
+            <img src="./static/images/baselines.png"
+                 class="baseline-image"
+                 alt="Interpolate start reference image."/>
+          </div>
+
+        </div>
+      </div>
+      <!-- Baselines. -->
+
+      <!-- Single scene. -->
+      <div class="row">
+        <div class="content">
+          <h5 class="title is-5">Single scene</h5>
+          <p>
+            We start by evaluating how well our method can transfer a policy trained exclusively on data-edited human video demonstrations in a single scene. We evaluate our method on five tasks that highlight the diversity of skills our method can learn. These include deformable object manipulation (rope task), multi-object manipulation (sweep task), object reorientation, insertion, and pick and place. Videos are at 5x speed.
+          </p>
+
+          <div class="video-container">
+            <video autoplay muted loop playsinline>
+              <source src="./static/videos/cleat_fast.mp4" type="video/mp4">
+            </video>
+            <video autoplay muted loop playsinline>
+              <source src="./static/videos/sweep_fast.mp4" type="video/mp4">
+            </video>
+            <video autoplay muted loop playsinline>
+              <source src="./static/videos/soap_fast.mp4" type="video/mp4">
+            </video>
+            <video autoplay muted loop playsinline>
+                <source src="./static/videos/stack_fast.mp4" type="video/mp4">
+            </video>
+            <video autoplay muted loop playsinline>
+              <source src="./static/videos/zebra_fast.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <p>
+            Across all tasks, Hand Inpaint and Hand Mask achieve comparable performance. However, Hand Mask takes on average 73% longer to rollout due to having to run an additional diffusion model at test time to generate the hand masks. Red Line and Vanilla are not able to complete any of the tasks. Videos are at 5x speed.
+          </p>
+
+          <div class="table-wrapper">
+            <!-- Results: Franka tasks -->
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Policy</th>
+                        <th>Pick/ Place Book</th>
+                        <th>Stack Cups</th>
+                        <th>Tie Rope</th>
+                        <th>Rotate Box</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hand Inpaint (Phantom) </td>
+                        <td>0.92</td>
+                        <td>0.72</td>
+                        <td>0.64</td>
+                        <td>0.72</td>
+                    </tr>
+                    <tr>
+                        <td>Hand Mask</td>
+                        <td>0.92</td>
+                        <td>0.52</td>
+                        <td>0.60</td>
+                        <td>0.76</td>
+                    </tr>
+                    <tr>
+                        <td>Red Line</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                    </tr>
+                    <tr>
+                        <td>Vanilla</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+            <!-- Results: Franka tasks: Sweep -->
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Policy</th>
+                        <th>Grasp Brush</th>
+                        <th>Sweep > 0</th>
+                        <th>Sweep > 2</th>
+                        <th>Sweep > 4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hand Inpaint (Phantom)</td>
+                        <td>0.88</td>
+                        <td>0.80</td>
+                        <td>0.72</td>
+                        <td>0.40</td>
+                    </tr>
+                    <tr>
+                        <td>Hand Mask</td>
+                        <td>0.75</td>
+                        <td>0.75</td>
+                        <td>0.72</td>
+                        <td>0.68</td>
+                    </tr>
+                    <tr>
+                        <td>Red Line</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                    </tr>
+                    <tr>
+                        <td>Vanilla</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+
+        </div>
+      </div>
+      <!-- Single Scene. -->
+
+      <!-- Scene generalization. -->
+      <div class="row mt-6">
+        <div class="content">
+          <h5 class="title is-5">Scene generalization</h5>
+          <p>
+            Next, we evaluate how well our method generalizes to new, unseen environments. We collect human video demonstrations of a sweeping task across diverse scenes, and evaluate in three OOD environments. Hand Inpaint achieves high success rates across all three OOD environments. Videos at 5x speed.
+          </p>
+          <div class="video-container-2">
+            <div class="video-item">
+                <video autoplay muted loop playsinline>
+                    <source src="./static/videos/outdoor_fast.mp4" type="video/mp4">
+                </video>
+                <p class="caption">OOD Scene #1</p>
+            </div>
+            <div class="video-item">
+                <video autoplay muted loop playsinline>
+                    <source src="./static/videos/lounge_fast.mp4" type="video/mp4">
+                </video>
+                <p class="caption">OOD Scene #2</p>
+            </div>
+            <div class="video-item">
+                <video autoplay muted loop playsinline>
+                    <source src="./static/videos/surface_fast.mp4" type="video/mp4">
+                </video>
+                <p class="caption">OOD Scene #2 + OOD surface</p>
+            </div>
+        </div>
+
+        <p style="margin-top: 20px;">
+          Hand Inpaint achieves high success rates across all three OOD environments. Videos are at 5x speed.
+        </p>
+        
+
+        <table class="styled-table">
+          <thead>
+              <tr>
+                  <th></th>
+                  <th>Outdoor lawn</th>
+                  <th>Indoor lounge</th>
+                  <th>Indoor lounge + OOD surface</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Hand Inpaint (Phantom)</td>
+                  <td>0.72</td>
+                  <td>0.84</td>
+                  <td>0.64</td>
+              </tr>
+              <tr>
+                  <td>Hand Mask</td>
+                  <td>0.52</td>
+                  <td>0.76</td>
+                  <td>0.68</td>
+              </tr>
+          </tbody>
+      </table>
+
+        
+
+        </div>
+      </div>
+      <!-- Scene generalization -->
+
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-3">
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
